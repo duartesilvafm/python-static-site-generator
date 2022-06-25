@@ -18,7 +18,7 @@ class Parser():
 
 
     def read(self, path):
-        with path.open() as file:
+        with open(path) as file:
             return file.read()
 
 
@@ -26,7 +26,7 @@ class Parser():
 
         full_path = dest / path.with_suffix(ext).name
 
-        with full_path.open() as file:
+        with open(full_path) as file:
             file.write(content)
 
     
