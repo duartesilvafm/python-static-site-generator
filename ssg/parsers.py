@@ -5,7 +5,8 @@ import shutil
 
 class Parser():
 
-    
+    extensions: List = [] 
+
     def __init__(self, extensions: List(str) = []):
         self.extensions = extensions
 
