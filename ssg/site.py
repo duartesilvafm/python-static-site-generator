@@ -14,7 +14,7 @@ class Site():
 
         directory = self.dest / path.relative_to(self.source)
 
-        os.mkdir(directory, parents = True, exist_ok = True)
+        directory.mkdir(parents = True, exist_ok = True)
 
 
     def build(self):
