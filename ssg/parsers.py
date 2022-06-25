@@ -8,8 +8,8 @@ class Parser():
 
     extensions: List[str] = []
     
-    
-    def valid_extensions(self, extension):
+
+    def valid_extension(self, extension):
         return extension in self.extensions
 
     
@@ -18,15 +18,15 @@ class Parser():
 
 
     def read(self, path):
-        with open(path) as file:
+        with path.open() as file:
             return file.read()
 
 
     def write(self, path, dest, content, ext = '.html'):
 
-        full_path = self.dest / path.with_suffix(ext).name
+        full_path = dest / path.with_suffix(ext).name
 
-        with open(full_path) as file:
+        with full_path.open() as file:
             file.write(content)
 
     
@@ -34,7 +34,7 @@ class Parser():
 
         tocopy = dest / path.relative_to(source)
 
-        shutil.copy2(src = path, dst = tocopy)
+        shutil.copy2(src=path, dst=tocopy)
 
 
 class ResourceParser(Parser):
