@@ -32,9 +32,7 @@ class Parser():
     
     def copy(self, path, source, dest):
 
-        tocopy = dest / path.relative_to(source)
-
-        shutil.copy2(path, tocopy)
+        shutil.copy2(path, dest / path.relative_to(source))
 
 
 class ResourceParser(Parser):
