@@ -31,7 +31,7 @@ class Site():
                 self.run_parser(path)
 
     
-    def load_parsers(self, extension):
+    def load_parser(self, extension):
 
         for parser in self.parsers:
             if parser.valid_extension(extension):
@@ -42,7 +42,7 @@ class Site():
 
         parser = self.load_parser(path.suffix)
 
-        if parser != None:
+        if parser is not None:
             parser.parse(path=path, source=self.source, dest=self.dest)
 
         else:

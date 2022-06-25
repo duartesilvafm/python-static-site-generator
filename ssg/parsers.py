@@ -18,7 +18,7 @@ class Parser():
 
 
     def read(self, path):
-        with open(path) as file:
+        with open(path, 'r') as file:
             return file.read()
 
 
@@ -26,7 +26,7 @@ class Parser():
 
         full_path = dest / path.with_suffix(ext).name
 
-        with open(full_path) as file:
+        with open(full_path, 'a+') as file:
             file.write(content)
 
     
@@ -34,7 +34,7 @@ class Parser():
 
         tocopy = dest / path.relative_to(source)
 
-        shutil.copy2(src=path, dst=tocopy)
+        shutil.copy2(path, tocopy)
 
 
 class ResourceParser(Parser):
