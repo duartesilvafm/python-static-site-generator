@@ -7,7 +7,7 @@ from collections.abc import Mapping
 class Content(Mapping):
 
 
-    __delimeter = "^(?:-|\+){3}\s*$"
+    __delimeter = r"^(?:-|\+){3}\s*$"
     __regex = re.compile(__delimeter, re.MULTILINE)
 
 
@@ -16,9 +16,9 @@ class Content(Mapping):
 
         _, fm, content = cls.__regex.split(string, 2)
 
-        load(fm, Loader = FullLoader)
+        metadata = load(fm, Loader = FullLoader)
 
-        cls(metadata, content)
+        return cls(metadata, content)
 
 
     def __init__(self, metadata, content):
@@ -35,8 +35,8 @@ class Content(Mapping):
         return self.data['type'] if 'type' in self.data else None
 
     @type.setter
-    def type(self, value):
-        self.data['type'] = value
+    def type(self, type):
+        self.data['type'] = type
 
     
     def __getitem__(self, key):
